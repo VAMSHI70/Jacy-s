@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Carousel Example</title>
+    <style>
+        .carousel {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            /* Adjust the max-width as needed */
+            margin: auto;
+            overflow: hidden;
+        }
+        
+        .carousel-inner {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .carousel-item img {
+            width: 100%;
+            display: block;
+        }
+        
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            user-select: none;
+            transform: translateY(-50%);
+        }
+        
+        .carousel-control.left {
+            left: 10px;
+        }
+        
+        .carousel-control.right {
+            right: 10px;
+        }
+        
+        .carousel-indicators {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .carousel-indicators li {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background: #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        .carousel-indicators li.active {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="carousel" id="myCarousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <a href="index1.html"><img src="images/tshirt1.jpeg" alt="Image 1"></a>
+            </div>
+            <div class="carousel-item">
+                <img src="images/tshirt2.jpeg" alt="Image 2">
+            </div>
+            <div class="carousel-item">
+                <img src="images/tshirt3.jpeg" alt="Image 3">
+            </div>
+        </div>
+        <div class="carousel-control left" onclick="prevSlide()">&#10094;</div>
+        <div class="carousel-control right" onclick="nextSlide()">&#10095;</div>
+        <div class="carousel-indicators">
+            <li class="active" onclick="goToSlide(0)"></li>
+            <li onclick="goToSlide(1)"></li>
+            <li onclick="goToSlide(2)"></li>
+        </div>
+    </div>
+
+    <script>
+        const carouselInner = document.querySelector('.carousel-inner');
+        const slides = document.querySelectorAll('.carousel-item');
+        const indicators = document.querySelectorAll('.carousel-indicators li');
+        let index = 0;
+
+        function showSlide(n) {
+            if (n >= slides.length) index = 0;
+            else if (n < 0) index = slides.length - 1;
+            else index = n;
+
+            carouselInner.style.transform = `translateX(-${index * 100}%)`;
+            indicators.forEach((indicator, i) => {
+                indicator.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            showSlide(index + 1);
+        }
+
+        function prevSlide() {
+            showSlide(index - 1);
+        }
+
+        function goToSlide(n) {
+            showSlide(n);
+        }
+
+        // Optionally, you can add automatic sliding
+        setInterval(nextSlide, 5000); // Change slide every 5 seconds
+    </script>
+
+</body>
+
+</html>

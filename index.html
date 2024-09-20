@@ -3,12 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JACY'S APPERALS</title>
+    <title>JACY'S APPARELS</title>
+    <style>
+        body {
+            background-image: url('test.jpg');
+            background-size: cover; /* Makes the background cover the entire viewport */
+            background-repeat: no-repeat; /* Prevents the background from repeating */
+            background-position: center; /* Centers the background image */
+            margin: 0; /* Removes default margin */
+            height: 100vh; /* Ensures the body takes full viewport height */
+            display: flex; /* Allows for responsive content alignment */
+            align-items: center; /* Centers content vertically */
+            justify-content: center; /* Centers content horizontally */
+            color: white; /* Change text color for better visibility */
+            text-align: center; /* Centers text */
+            padding: 20px; /* Adds some padding */
+            box-sizing: border-box; /* Includes padding in height/width */
+        }
 
+        h1 {
+            font-size: 2.5rem; /* Default font size for headings */
+        }
 
+        p {
+            font-size: 1.2rem; /* Default font size for paragraphs */
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem; /* Slightly smaller on tablets */
+            }
+            p {
+                font-size: 1rem; /* Smaller text for better readability */
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem; /* Even smaller on mobile */
+            }
+            p {
+                font-size: 0.9rem; /* Adjust paragraph size for mobile */
+            }
+        }
+    </style>
 </head>
-<body style = "background-image:url('test.jpg');">
-    
-    
+<body>
+    <h1>Welcome to JACY'S APPARELS</h1>
+    <p>Your one-stop shop for trendy fashion!</p>
 </body>
 </html>
